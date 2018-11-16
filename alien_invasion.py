@@ -21,15 +21,18 @@ def run_game():
     ship = Ship(ai_settings,screen)
     #创建存储子弹的编组
     bullets = Group()
+    bullets_R = Group()
 
 
 
     #开始游戏的主循环
     while True:
         #监视键盘和鼠标事件
-        gf.check_events(ai_settings,screen,ship,bullets)
+        gf.check_events(ai_settings,screen,ship,bullets,bullets_R)
         ship.update()
-        bullets.update()
-        gf.update_screen(ai_settings,screen,ship,bullets)
+        gf.update_bullets(bullets,bullets_R)
+
+        #print(len(bullets))
+        gf.update_screen(ai_settings,screen,ship,bullets,bullets_R)
 
 run_game()
