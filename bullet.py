@@ -15,6 +15,7 @@ class Bullet(Sprite):
 
         #存储用小数表示的子弹位置
         self.y = float(self.rect.y)
+        self.x = float(self.rect.x)
         self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor
 
@@ -24,6 +25,12 @@ class Bullet(Sprite):
         self.y -= self.speed_factor
         #更新表示子弹的rect的位置
         self.rect.y = self.y
+    def right(self):
+        """右上移动子弹"""
+        self.y -= self.speed_factor
+        self.rect.y = self.y
+        self.x += self.speed_factor
+        self.rect.x = self.x
 
     def draw_bullet(self):
         """在屏幕上绘制子弹"""
